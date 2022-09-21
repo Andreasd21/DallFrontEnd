@@ -1,5 +1,4 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
 import axios from 'axios';
 </script>
 
@@ -22,6 +21,5 @@ export default {
   <main>
   testtt
   {{info}}
-    <TheWelcome />
   </main>
 </template>

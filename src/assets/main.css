@@ -1,10 +1,10 @@
 @import "./base.css";
 
 .navigation{
-  display: block;
+  display: flex;
   width: 100vw;
   background-color: grey;
-  height: 5vh;
+  height: 7vh;
 }
 
 .paintingCol{
@@ -14,6 +14,49 @@
   height: 30vh;
 }
 
+.paintingInfoCol
+{
+  background-color: grey;
+  margin: 3vw;
+  height: 60vh;
+  margin-top:5vh !important;
+}
+
+.lowLogo
+{
+  background-image: url(./pictures/Low-Resolution-Logo.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.navigation .lowLogo
+{
+  width: 100px;
+  height: 7vh;
+}
+
+.searchbar
+{
+  width: 20%;
+  margin: auto;
+  position: relative;
+
+}
+
+.searchbar input
+{
+  border:none;
+  display: block;
+  box-sizing: border-box;
+}
+
+.searchbar .search
+{
+  background-image: url(./pictures/search.png);
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
 .paintingRow{
   margin-top: 2vh !important;
   margin-bottom: 2vh;
@@ -22,6 +65,7 @@
   background-color: red;
   height: 70%;
   margin: 5%;
+  cursor: pointer;
 }
 
 @media (hover: hover) {

@@ -1,6 +1,5 @@
 <script setup>
 import axios from 'axios';
-import 'bootstrap'
 import PaintingRow from '../components/PaintingRow.vue'
 </script>
 
@@ -25,5 +24,6 @@ export default {
     <PaintingRow />
     <PaintingRow />
     <PaintingRow />
+    
   </div>
 </template>

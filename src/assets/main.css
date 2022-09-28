@@ -134,6 +134,7 @@
 @media (min-width: 1024px) {
   body {
     display: flex;
+    overflow-x: hidden;
   }
 
   #app {

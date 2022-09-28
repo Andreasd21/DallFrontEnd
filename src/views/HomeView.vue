@@ -1,8 +1,10 @@
 <script setup>
 import axios from 'axios';
+import 'bootstrap'
+import PaintingRow from '../components/PaintingRow.vue'
 </script>
 
-  <script>
+<script>
 export default {
   data() {
     return {
@@ -18,8 +20,10 @@ export default {
 };
 </script>
 <template>
-  <main>
-  testtt
-  {{info}}
-  </main>
+  <div class="container">
+    {{info}}
+    <PaintingRow />
+    <PaintingRow />
+    <PaintingRow />
+  </div>
 </template>

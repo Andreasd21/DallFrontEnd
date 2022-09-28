@@ -4,6 +4,24 @@
   display: block;
   width: 100vw;
   background-color: grey;
+  height: 5vh;
+}
+
+.paintingCol{
+  display: block;
+  background-color: grey;
+  margin: 8vh;
+  height: 30vh;
+}
+
+.paintingRow{
+  margin-top: 2vh !important;
+  margin-bottom: 2vh;
+}
+.painting{
+  background-color: red;
+  height: 70%;
+  margin: 5%;
 }
 
 @media (hover: hover) {
@@ -15,7 +33,6 @@
 @media (min-width: 1024px) {
   body {
     display: flex;
-    place-items: center;
   }
 
   #app {

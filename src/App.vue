@@ -4,8 +4,8 @@ import Nav from './components/Nav.vue';
 </script>
 
 <template>
-<Nav />
 <main>
+  <Nav />
   <RouterView />
 </main>
 </template>

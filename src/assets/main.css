@@ -7,6 +7,66 @@
   height: 7vh;
 }
 
+.loginDiv
+{
+  display: flex;
+  text-align: center;
+  margin-right:2vw ;
+}
+
+.loginButton
+{
+  border-radius: 10px;
+  top:25%;
+  height: 50%;
+
+}
+
+.addRowButton
+{
+  background-color: grey;
+  border: none;
+  border-radius: 25px;
+  margin: auto;
+  width: 10vw;
+  height: 5vh;
+  color: ghostwhite;
+}
+
+.rowButton
+{
+  text-align: center;
+  margin-bottom: 2vh;
+}
+
+.paintingCard
+{
+  height: 70%;
+  margin: 5%;
+  cursor: pointer;
+  background-position: center;
+}
+
+.infoPainting
+{
+  padding:5%;
+  color:ghostwhite;
+}
+
+.bigPaintingCard
+{
+  margin:5%;
+  height: 85%;
+  background-position: center;
+}
+
+.testPainting
+{
+  background-image: url('./pictures/TestPainting.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 .paintingCol{
   display: block;
   background-color: grey;
@@ -37,7 +97,6 @@
 
 .searchbar
 {
-  width: 20%;
   margin: auto;
   position: relative;
 
@@ -48,6 +107,9 @@
   border:none;
   display: block;
   box-sizing: border-box;
+  margin:auto;
+  width: fit-content;
+
 }
 
 .searchbar .search
@@ -61,12 +123,7 @@
   margin-top: 2vh !important;
   margin-bottom: 2vh;
 }
-.painting{
-  background-color: red;
-  height: 70%;
-  margin: 5%;
-  cursor: pointer;
-}
+
 
 @media (hover: hover) {
   a:hover {

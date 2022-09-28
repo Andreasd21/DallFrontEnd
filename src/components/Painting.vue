@@ -2,7 +2,7 @@
 </script>
 <template>
 <div class="paintingCol col">
-    <div class="painting" @click="paintingInfo"></div>price:
+    <div class="paintingCard testPainting" @click="paintingInfo"></div>price:
 </div>
 </template>
 

@@ -6,6 +6,9 @@
     <div class="searchbar">
         <input type="text" placeholder="Search..." >
     </div>
+    <div class="loginDiv">
+      <Button class="loginButton" @click="Login">Login</Button>
+    </div>
 </div>
 </template>
 
@@ -13,8 +16,12 @@
 export default {
     methods: {
       Home() {
-        //Navigeer naar painting info view;
+        //Navigeer naar home view;
         this.$router.push("/");
+      },
+      Login() {
+        //Navigeer naar Login view;
+        this.$router.push("/login");
       },
     }
 }

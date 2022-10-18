@@ -49,6 +49,7 @@ body{
   margin: 5%;
   cursor: pointer;
   background-position: center;
+  text-align-last:center ;
 }
 
 .infoPainting
@@ -59,16 +60,11 @@ body{
 
 .bigPaintingCard
 {
-  margin:5%;
+  margin-top:5%;
   height: 85%;
   background-position: center;
-}
+  text-align-last:center ;
 
-.testPainting
-{
-  background-image: url('./pictures/TestPainting.png');
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 
 .paintingCol{

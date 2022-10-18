@@ -1,18 +1,53 @@
-<script setup>
-</script>
+
 <template>
 <div class="paintingCol col">
-    <div class="paintingCard testPainting" @click="paintingInfo"></div>price:
+    <div class="paintingCard imagePainting" @click="paintingInfo">
+      <img :src="location"/>
+
+    </div>price:
 </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      imagepath: "/src/components/dino.png",
+    };
+  },
+  props:{
+    id: Number,
+    location: {
+      type:String,
+      default:'/src/assets/pictures/TestPainting.png'
+    },
+    name:String,
+    DateOfCreation:String,
+    creator:String,
+    prompt:String
+  },
+  created(){
+  },
     methods: {
       paintingInfo() {
         //Navigeer naar painting info view;
-        this.$router.push("info");
+        this.$router.push({
+          name:"info",
+          params: {Id : this.id }
+        });
       },
-    }
+    },
 }
 </script>
+
+<style scoped>
+  img
+  {
+    
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
+    margin: 5%;
+
+  }
+</style>

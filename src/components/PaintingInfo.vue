@@ -1,8 +1,42 @@
 <script setup>
+import axios from 'axios';
 </script>
+
+
+<script >
+    export default {
+  data() {
+    return {
+      info : [],
+    }
+    },
+    mounted(){
+      this.loadData()
+    },
+    methods: {
+
+      loadData: async function() {
+        await axios.get('https://localhost:44340/api/paintings/'+this.$route.params.Id).then(res =>{
+        this.info = res.data
+      })
+    }
+  }
+}
+</script>
+<style scoped>
+    img
+    {
+      background-size: contain;
+      background-repeat: no-repeat;
+      height: 100%;
+    }
+  </style>
 <template>
 <div class="col paintingInfoCol">
-<div class="bigPaintingCard testPainting"></div>
+<div class="bigPaintingCard imagePainting">
+  <img :src="'../../'+info.location"/>
+  <img>
+</div>
 </div>
 <div class="col paintingInfoCol">
     <div class="infoPainting">

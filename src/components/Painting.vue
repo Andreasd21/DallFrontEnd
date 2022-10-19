@@ -4,7 +4,7 @@
     <div class="paintingCard imagePainting" @click="paintingInfo">
       <img :src="location"/>
 
-    </div>price:
+    </div>price: {{price}}
 </div>
 </template>
 
@@ -24,7 +24,9 @@ export default {
     name:String,
     DateOfCreation:String,
     creator:String,
-    prompt:String
+    prompt:String,
+    price:Number,
+    description:String
   },
   created(){
   },

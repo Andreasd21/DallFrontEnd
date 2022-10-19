@@ -33,7 +33,6 @@ export default {
         }
         this.post.push(row)
         row = []
-        console.log(this.info)
       }
       })
     },
@@ -44,7 +43,6 @@ export default {
         row.push(this.info.data[this.count+2]);
         this.post.push(row)
         this.count = this.count+3
-        console.log(this.post)
       }
     },
 };

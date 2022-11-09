@@ -11,7 +11,8 @@ export default {
       info: {},
       post:[],
       count:9,
-      isFetching:true
+      isFetching:true,
+      Remaining:true
     };
   },
 
@@ -43,6 +44,15 @@ export default {
         row.push(this.info.data[this.count+2]);
         this.post.push(row)
         this.count = this.count+3
+        if (this.info.data[this.count] == null){
+          this.showRequest()
+        }
+      },
+      showRequest(){
+        this.Remaining = false
+      },
+      toRequest(){
+        this.$router.push('Request')
       }
     },
 };
@@ -53,8 +63,11 @@ export default {
           <PaintingRow :painting1="paintings[0]" :painting2="paintings[1]" :painting3="paintings[2]"/>
        </span>
     <div class="rowButton">
-      <button class="addRowButton" @click="addRow">
+      <button class="addRowButton" @click="addRow" v-if="Remaining">
         More
+      </button>
+      <button class="addRowButton" @click="toRequest" v-else >
+        No more paintings
       </button>
     </div>
   </div>

@@ -38,4 +38,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: Neskred/DalleShop:latest
+          tags: neskred/dalle:latest

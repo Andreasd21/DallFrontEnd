@@ -13,7 +13,6 @@ import RegisterForm from '../components/RegisterFrom.vue';
         <RegisterForm />
     </div>
 </div>
-
 <div>
     <div>
         <button @click="GetRegisterform">

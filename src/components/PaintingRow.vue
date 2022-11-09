@@ -27,10 +27,8 @@ export default {
     DateOfCreation:String,
     creator:String,
     prompt:String
-  }},
-  created(){
-    console.log(this.painting1)
   }
+}
 }
 </script>
 <template>

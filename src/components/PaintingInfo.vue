@@ -8,7 +8,8 @@ import axios from 'axios';
   data() {
     return {
       info : [],
-      imagepath:''
+      imagepath:'',
+      isFetching:true
     }
     },
     mounted(){  
@@ -16,9 +17,10 @@ import axios from 'axios';
     },
     methods: {
       loadData: async function() {
-        await axios.get('https://localhost:49155/api/paintings/'+this.$route.params.Id).then(res =>{
+        await axios.get('https://localhost:49153/api/paintings/'+this.$route.params.Id).then(res =>{
         this.info = res.data
         this.imagepath = 'http://127.0.0.1:8081/' + this.info.location
+        this.isFetching = false
       })
     }
   }
@@ -33,7 +35,9 @@ import axios from 'axios';
     }
   </style>
 <template>
-<div class="col paintingInfoCol">
+  <div v-if="isFetching">loading</div>
+  <div v-else>
+<div class="col paintingInfoCol infoCol">
 <div class="bigPaintingCard imagePainting">
   <img :src="imagepath"/>
 </div>
@@ -64,6 +68,7 @@ import axios from 'axios';
       </div>
     </div>
 </div>
+</div>
 </template>
 
 <style scoped>
@@ -73,5 +78,10 @@ import axios from 'axios';
 
 .bottom{
   bottom: -25vh;
+}
+
+.infoCol{
+display: flex;
+justify-content: center;
 }
 </style>

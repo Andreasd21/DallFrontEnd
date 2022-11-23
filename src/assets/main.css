@@ -66,10 +66,10 @@ body{
 
 .bigPaintingCard
 {
-  margin-top:5%;
   height: 85%;
   background-position: center;
   text-align-last:center ;
+  align-self: center;
 
 }
 
@@ -146,6 +146,7 @@ body{
   width: 10vw;
   height: 5vh;
   color: ghostwhite;
+
 }
 
 @media (hover: hover) {

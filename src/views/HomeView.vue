@@ -1,6 +1,5 @@
 <script setup>
 import PaintingRow from '../components/PaintingRow.vue'
-import {useFetch} from '../Js/FetchData.js'
 import axios from 'axios';
 </script>
 
@@ -47,6 +46,7 @@ export default {
         row = []
       }
       })
+      this.isFetching = false
     },
       addRow() {
         let row = []
@@ -70,6 +70,9 @@ export default {
 </script>
 <template>
   <div class="container" v-if="isFetching">
+    loading
+  </div>
+  <div class="container" v-else>
        <span v-for="paintings in post">
           <PaintingRow :painting1="paintings[0]" :painting2="paintings[1]" :painting3="paintings[2]"/>
        </span>
@@ -82,8 +85,6 @@ export default {
       </button>
     </div>
   </div>
-  <div class="container" v-else>
-    loading
-  </div>
+
 </template>
 

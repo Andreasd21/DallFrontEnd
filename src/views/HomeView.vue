@@ -18,13 +18,24 @@ export default {
 
   mounted(){
     this.loadData()
+    // axios.get('https://localhost:49153/api/paintings').then(res =>{
+    //   console.log(res)
+    // })
+    // axios.get('http://172.17.0.4/api/paintings').then(res =>{
+    //   console.log(res)
+    // })
+    // axios.get('https://172.17.0.4:433/api/paintings').then(res =>{
+    //   console.log(res)
+    // })
+    // axios.get('172.17.0.4:433/api/paintings').then(res =>{
+    //   console.log(res)
+    // })
   },
   methods: {
 
     loadData: async function() {
-      await axios.get('https://localhost:44340/api/paintings').then(res =>{
+      await axios.get('https://localhost:49153/api/paintings').then(res =>{
       this.info = res
-
       let row= []
       let index =0;
       for(let x= 0; x<3;x++){

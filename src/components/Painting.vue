@@ -2,7 +2,7 @@
 <template>
 <div class="paintingCol col">
     <div class="paintingCard imagePainting" @click="paintingInfo">
-      <img :src="location"/>
+      <img :src="imagepath"/>
 
     </div>price: {{price}}
 </div>
@@ -12,14 +12,14 @@
 export default {
   data() {
     return {
-      imagepath: "/src/components/dino.png",
+      imagepath: "",
     };
   },
   props:{
     id: Number,
     location: {
       type:String,
-      default:'/src/assets/pictures/TestPainting.png'
+      default:'http://127.0.0.1:8081/dino.png'
     },
     name:String,
     DateOfCreation:String,
@@ -29,6 +29,7 @@ export default {
     description:String
   },
   created(){
+    this.imagepath = 'http://127.0.0.1:8081/' + this.location
   },
     methods: {
       paintingInfo() {

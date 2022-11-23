@@ -1,28 +1,67 @@
 <script setup>
+  import {Logout} from '../Js/Authenticate'
 </script>
 <template>
 <div class="navigation"> 
     <div class="lowLogo" @click="Home"></div>
-    <div class="searchbar">
+    <!-- <div class="searchbar">
         <input type="text" placeholder="Search..." >
-    </div>
-    <div class="loginDiv">
-      <Button class="loginButton" @click="Login">Login</Button>
+    </div> -->
+    <div class="info">
+      <div class="profile" v-if="user">
+          <div @click="User">{{ user.userName }}</div>
+      </div>
+      <div class="loginDiv" v-if="user">
+        <Button class="loginButton" @click="LogoutNav">Logout</Button>
+      </div>
+      <div class="loginDiv" v-else>
+        <Button class="loginButton" @click="Login">Login</Button>
+      </div>
     </div>
 </div>
 </template>
 
 <script>
 export default {
-    methods: {
-      Home() {
-        //Navigeer naar home view;
-        this.$router.push("/");
-      },
-      Login() {
-        //Navigeer naar Login view;
-        this.$router.push("/login");
-      },
-    }
+  data() {
+    return {
+      user:false,
+    };
+  },
+  mounted(){
+
+
+    window.addEventListener('user',()=>{
+      let storage = JSON.parse(sessionStorage.getItem('userDall'))
+      if(storage != null){
+        this.user = storage
+       }
+      else{
+        this.user= false
+      }
+    })
+  },
+  methods: {
+    Home() {
+      //Navigeer naar home view;
+      this.$router.push("/");
+    },
+    Login() {
+      //Navigeer naar Login view;
+      this.$router.push("/login");
+    },
+    LogoutNav(){
+      if(Logout()){
+        this.$router.push("/")
+      }
+    },      
+    User() {
+      //Navigeer naar painting info view;
+      this.$router.push({
+        name:"user",
+        params: {Id : this.user.id }
+      });
+    },
+  }
 }
 </script>

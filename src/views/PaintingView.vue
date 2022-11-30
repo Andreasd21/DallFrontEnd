@@ -7,9 +7,12 @@
     <div class="row">
         <PaintingInfo/>
     </div>
-    <div class="row">
+    <div class="row d-flex">
         <button class="buyButton">
             Buy
+        </button>
+        <button class="buyButton">
+            Favorite
         </button>
     </div>
 </div>

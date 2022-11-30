@@ -1,6 +1,5 @@
 <script setup>
 import PaintingRow from '../components/PaintingRow.vue'
-import {useFetch} from '../Js/FetchData.js'
 import axios from 'axios';
 </script>
 
@@ -11,19 +10,31 @@ export default {
       info: {},
       post:[],
       count:9,
-      isFetching:true
+      isFetching:true,
+      Remaining:true
     };
   },
 
   mounted(){
     this.loadData()
+    // axios.get('https://localhost:49153/api/paintings').then(res =>{
+    //   console.log(res)
+    // })
+    // axios.get('http://172.17.0.4/api/paintings').then(res =>{
+    //   console.log(res)
+    // })
+    // axios.get('https://172.17.0.4:433/api/paintings').then(res =>{
+    //   console.log(res)
+    // })
+    // axios.get('172.17.0.4:433/api/paintings').then(res =>{
+    //   console.log(res)
+    // })
   },
   methods: {
 
     loadData: async function() {
-      await axios.get('https://localhost:44340/api/paintings').then(res =>{
+      await axios.get('https://localhost:49153/api/paintings').then(res =>{
       this.info = res
-
       let row= []
       let index =0;
       for(let x= 0; x<3;x++){
@@ -35,6 +46,7 @@ export default {
         row = []
       }
       })
+      this.isFetching = false
     },
       addRow() {
         let row = []
@@ -43,23 +55,36 @@ export default {
         row.push(this.info.data[this.count+2]);
         this.post.push(row)
         this.count = this.count+3
+        if (this.info.data[this.count] == null){
+          this.showRequest()
+        }
+      },
+      showRequest(){
+        this.Remaining = false
+      },
+      toRequest(){
+        this.$router.push('Request')
       }
     },
 };
 </script>
 <template>
   <div class="container" v-if="isFetching">
+    loading
+  </div>
+  <div class="container" v-else>
        <span v-for="paintings in post">
           <PaintingRow :painting1="paintings[0]" :painting2="paintings[1]" :painting3="paintings[2]"/>
        </span>
     <div class="rowButton">
-      <button class="addRowButton" @click="addRow">
+      <button class="addRowButton" @click="addRow" v-if="Remaining">
         More
+      </button>
+      <button class="addRowButton" @click="toRequest" v-else >
+        No more paintings
       </button>
     </div>
   </div>
-  <div class="container" v-else>
-    loading
-  </div>
+
 </template>
 

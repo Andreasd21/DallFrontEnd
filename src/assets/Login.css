@@ -1,0 +1,60 @@
+.lowLogo
+{
+  background-image: url(./pictures/Low-Resolution-Logo.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.navigation .lowLogo
+{
+  width: 100px;
+  height: 7vh;
+}
+
+.searchbar
+{
+  margin: auto;
+  position: relative;
+
+}
+
+.searchbar input
+{
+  border:none;
+  display: block;
+  box-sizing: border-box;
+  margin:auto;
+  width: fit-content;
+
+}
+
+.searchbar .search
+{
+  background-image: url(./pictures/search.png);
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.paintingRow{
+  margin-top: 2vh !important;
+  margin-bottom: 2vh;
+}
+
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    overflow-x: hidden;
+  }
+
+  #app {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}

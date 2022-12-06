@@ -17,23 +17,119 @@ export default {
 
   mounted(){
     this.loadData()
-    // axios.get('https://localhost:49153/api/paintings').then(res =>{
-    //   console.log(res)
-    // })
-    // axios.get('http://172.17.0.4/api/paintings').then(res =>{
-    //   console.log(res)
-    // })
-    // axios.get('https://172.17.0.4:433/api/paintings').then(res =>{
-    //   console.log(res)
-    // })
-    // axios.get('172.17.0.4:433/api/paintings').then(res =>{
-    //   console.log(res)
-    // })
+    axios.get('http://dall_api/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+    axios.get('https://dall_api/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+
+    axios.get('http://dall_api:433/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+    axios.get('https://dall_api:433/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+
+    axios.get('http://172.22.0.1/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+    axios.get('https://172.22.0.1/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+
+    axios.get('http://172.22.0.2/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+    axios.get('https://172.22.0.2/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+
+
+    axios.get('http://172.22.0.3/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+    axios.get('https://172.22.0.3/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+
+    axios.get('http://172.22.0.4/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+    axios.get('https://172.22.0.4/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+
+    axios.get('http://172.22.0.5/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+    axios.get('https://172.22.0.5/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+
+    axios.get('http://172.22.0.6/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+    axios.get('https://172.22.0.6/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+
+    axios.get('http://172.22.0.1:433/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+    axios.get('https://172.22.0.1:433/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+
+    axios.get('http://172.22.0.2:433/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+    axios.get('https://172.22.0.2:433/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+
+
+    axios.get('http://172.22.0.3:433/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+    axios.get('https://172.22.0.3:433/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+
+    axios.get('http://172.22.0.4:433/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+    axios.get('https://172.22.0.4:433/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+
+    axios.get('http://172.22.0.5:433/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+    axios.get('https://172.22.0.5:433/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+
+    axios.get('http://172.22.0.6:433/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+    axios.get('https://172.22.0.6:433/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+    
+
+    axios.get('http://localhost:8082/api/Paintings').then((res)=>{
+      console.log(res)
+    })
+
+    axios.get('http://localhost:8083/api/Paintings').then((res)=>{
+      console.log(res)
+    })
   },
   methods: {
 
     loadData: async function() {
-      await axios.get('https://localhost:49153/api/paintings').then(res =>{
+      await axios.get(`${import.meta.env.VITE_API_ENDPOINT}api/Paintings`).then(res =>{
       this.info = res
       let row= []
       let index =0;

@@ -19,7 +19,7 @@ import axios from 'axios';
       loadData: async function() {
         await axios.get('https://localhost:49153/api/paintings/'+this.$route.params.Id).then(res =>{
         this.info = res.data
-        this.imagepath = 'http://127.0.0.1:8081/' + this.info.location
+        this.imagepath = 'http://127.0.0.1:8080/' + this.info.location
         this.isFetching = false
       })
     }

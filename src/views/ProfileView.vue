@@ -14,6 +14,9 @@ import axios from 'axios';
     <div>
         WinkelMandje:
     </div>
+    <div>
+      Bought:
+    </div>
 </div>
 
 </template>

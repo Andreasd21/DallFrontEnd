@@ -19,7 +19,7 @@ export default {
     id: Number,
     location: {
       type:String,
-      default:'http://127.0.0.1:8081/dino.png'
+      default:'http://127.0.0.1:8080/dino.png'
     },
     name:String,
     DateOfCreation:String,
@@ -29,7 +29,7 @@ export default {
     description:String
   },
   created(){
-    this.imagepath = 'http://127.0.0.1:8081/' + this.location
+    this.imagepath = 'http://127.0.0.1:8080/' + this.location
   },
     methods: {
       paintingInfo() {

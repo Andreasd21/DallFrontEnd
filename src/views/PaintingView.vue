@@ -13,9 +13,6 @@
         <button class="buyButton" @click="Buy">
             Buy
         </button>
-        <button class="buyButton">
-            Favorite
-        </button>
     </div>
 </div>
 
@@ -29,13 +26,22 @@
         }
     },
     methods: {
-        Buy(){
+        async Buy(){
             if (sessionStorage.getItem('userDall') != null) {
-                BuyPainting()
+                const user = JSON.parse(sessionStorage.getItem('userDall'))
+                console.log(user)
+                if (await BuyPainting(user.id,this.$route.params.Id)){
+                    this.$router.push({
+                        name:"user",
+                        params: {Id : user.id }
+                    })
+                }else{
+                    this.error = 'already bought item'
+                }
             }
             else{
                 this.error = 'PLS log in'
-            }
+            }   
         }
 
 

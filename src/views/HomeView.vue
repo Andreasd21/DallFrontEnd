@@ -17,8 +17,6 @@ export default {
 
   mounted(){
     this.loadData()
-
-    console.log(dall_api)
   },
   methods: {
 

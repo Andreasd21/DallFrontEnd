@@ -1,6 +1,8 @@
 <script setup>
 import PaintingRow from '../components/PaintingRow.vue'
 import axios from 'axios';
+import {ChatHub} from '../Js/Chat'
+
 </script>
 
 <script>
@@ -11,12 +13,18 @@ export default {
       post:[],
       count:9,
       isFetching:true,
-      Remaining:true
+      Remaining:true,
+      counter:0,
     };
   },
 
   mounted(){
     this.loadData()
+    var chat = new ChatHub
+
+    window.addEventListener('NewCount',()=>{
+        this.counter = sessionStorage.getItem('NewCount')
+      })
   },
   methods: {
 
@@ -71,6 +79,9 @@ export default {
       <button class="addRowButton" @click="toRequest" v-else >
         No more paintings
       </button>
+      <div>
+        {{counter}}
+      </div>
     </div>
   </div>
 

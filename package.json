@@ -8,12 +8,14 @@
     "test:unit": "vitest --environment jsdom"
   },
   "dependencies": {
+    "@microsoft/signalr": "^7.0.0",
     "axios": "^0.27.2",
     "bootstrap": "^5.2.1",
     "esbuild": "^0.15.9",
     "jquery": "^3.6.1",
     "pinia": "^2.0.21",
     "popper.js": "^1.16.1",
+    "signalr": "^2.4.3",
     "vue": "^3.2.38",
     "vue-router": "^4.1.5"
   },

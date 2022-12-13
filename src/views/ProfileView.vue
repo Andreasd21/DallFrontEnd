@@ -12,10 +12,10 @@ import axios from 'axios';
         <p @click="request">Create painting request</p> 
     </div>
     <div>
-        WinkelMandje:
-    </div>
-    <div>
       Bought:
+      <li v-for="painting in paintings">
+        {{ painting }}
+      </li>
     </div>
 </div>
 
@@ -26,10 +26,12 @@ import axios from 'axios';
   data() {
     return {
       info : [],
+      paintings:[]
     }
     },
     mounted(){  
       this.loadData()
+      this.LoadBought()
       console.log(this.info)
     },
     methods: {
@@ -37,6 +39,24 @@ import axios from 'axios';
         await axios.get('https://localhost:49153/api/Users/'+this.$route.params.Id).then(res =>{
             console.log(res)
             this.info = res.data
+      })
+    },
+    async LoadBought()
+    {
+      await axios.get(`${import.meta.env.VITE_API_ENDPOINT}api/UserPaintings`,+this.$route.params.Id).then((res)=>{
+        console.log(res)
+        for (let index = 0; index < res.data.length; index++) {
+          const element = res.data[index];
+          this.getPainting(element.paintingId)
+          
+        }
+      })
+    },
+    async getPainting(Id){
+      await axios.get(`${import.meta.env.VITE_API_ENDPOINT}api/Paintings/`+Id).then((res)=>{
+        console.log(res)
+
+        this.paintings.push(res.data.name) 
       })
     },
     request(){

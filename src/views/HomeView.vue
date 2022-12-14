@@ -1,7 +1,6 @@
 <script setup>
 import PaintingRow from '../components/PaintingRow.vue'
 import axios from 'axios';
-import {ChatHub} from '../Js/Chat'
 
 </script>
 
@@ -20,11 +19,13 @@ export default {
 
   mounted(){
     this.loadData()
-    var chat = new ChatHub
 
     window.addEventListener('NewCount',()=>{
+        console.log('hoiii')
         this.counter = sessionStorage.getItem('NewCount')
       })
+
+    this.counter = sessionStorage.getItem('NewCount')
   },
   methods: {
 

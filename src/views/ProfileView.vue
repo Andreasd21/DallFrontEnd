@@ -1,5 +1,6 @@
 <script setup>
 import axios from 'axios';
+import { CheckUser } from '../Js/Authenticate';
 </script>
 
 <template>
@@ -26,13 +27,23 @@ import axios from 'axios';
   data() {
     return {
       info : [],
-      paintings:[]
+      paintings:[],
+      user: null
     }
     },
     mounted(){  
       this.loadData()
       this.LoadBought()
-      console.log(this.info)
+
+      if(CheckUser){
+        this.user = JSON.parse(sessionStorage.getItem('userDall'))
+      }else{
+        this.$router.push('/')
+      }
+      if (this.user.id != this.$route.params.Id){
+        this.$router.push('/')
+      }
+
     },
     methods: {
       loadData: async function() {

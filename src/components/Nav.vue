@@ -1,5 +1,6 @@
 <script setup>
   import {Logout} from '../Js/Authenticate'
+  import { CheckUser } from '../Js/Authenticate';
 </script>
 <template>
 <div class="navigation"> 
@@ -12,7 +13,7 @@
           <div @click="User">{{ user.userName }}</div>
       </div>
       <div class="loginDiv" v-if="user">
-        <Button class="loginButton" @click="LogoutNav">Logout</Button>
+        <Button class="loginButton" @click="LogoutNav()">Logout</Button>
       </div>
       <div class="loginDiv" v-else>
         <Button class="loginButton" @click="Login">Login</Button>
@@ -29,19 +30,19 @@ export default {
     };
   },
   mounted(){
-
-
-    window.addEventListener('user',()=>{
-      let storage = JSON.parse(sessionStorage.getItem('userDall'))
-      if(storage != null){
-        this.user = storage
-       }
-      else{
-        this.user= false
-      }
-    })
+    window.addEventListener('user',(()=>{
+      this.UserCheck()
+    }))
+    this.UserCheck()
   },
   methods: {
+    UserCheck(){
+      if(CheckUser()){
+        this.user = JSON.parse(sessionStorage.getItem('userDall'))
+      }else{
+        this.user = false
+      }
+    },
     Home() {
       //Navigeer naar home view;
       this.$router.push("/");

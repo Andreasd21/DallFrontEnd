@@ -84,13 +84,15 @@ export default {
       this.loginError = this.loginError.length > 0 ? '' : ''
       this.passwordError = this.password.length == 0 ? 'Password can not be empty.' : ''
     },
-    submit() {
+    async submit() {
       this.checkEmail();
       this.checkPassword();
 
       if(this.passwordError == '' && this.emailError == '')
       {
-        if(Login(this.email, this.password))
+        let error = await Login(this.email, this.password)
+        console.log(error)
+        if(!error)
         {
            this.$router.push("/");
         }

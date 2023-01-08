@@ -1,20 +1,25 @@
 import axios from "axios"
 
 export const Login = async(email, pass) => {
-  const event = new Event('user')
+  const event =  new Event('user')
+  let errorstatus = false
     await axios.post('https://localhost:49153/api/Users/Login/',
     {
         Email:email,
         Password:pass
     }).catch(function (error) {
       console.log(error);
-      return false
+      errorstatus = true
+      return
   }).then(function (response) {
+    if (errorstatus == true){
+      return
+    }
+        console.log(response)
         sessionStorage.setItem('userDall',JSON.stringify(response.data))
         window.dispatchEvent(event)
-        return true
     })
-
+    return errorstatus
 }
 
 export const CreateAccount = async(name, email, pass) => {
@@ -49,7 +54,7 @@ export const Logout = () => {
   }
 
   export const CheckUser = () =>{
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(sessionStorage.getItem('userDall'));
     if(user !== null){
       return true
     }

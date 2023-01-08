@@ -1,5 +1,30 @@
 <script setup>
-    
+    import {postPrompt} from '../Js/Prompt.js'
+</script>
+
+<script>
+    export default{
+        data(){
+            return{
+                promptText:''
+            }
+        },
+        mounted(){
+            const user = JSON.parse(sessionStorage.getItem('userDall'))
+            if (user == null){
+                this.$router.push('/')
+            }
+        },
+        methods:{
+            promp(){
+                if (this.promptText == ''){
+                    return
+                }
+                const user = JSON.parse(sessionStorage.getItem('userDall'))
+                postPrompt(this.promptText,user.id)
+            }
+        }
+    }
 </script>
 
 <template>
@@ -12,12 +37,12 @@
     <div class="row d-flex">
         <div class="col align-self-center d-flex">
             Prompt
-            <input type="text" placeholder="b.v. Batman in a flowerfield, comic style">
+            <input v-model="promptText" type="text" placeholder="b.v. Batman in a flowerfield, comic style">
         </div>
     </div>
     <div class="row d-flex">
         <div class="col align-self-center d-flex">
-            <button type="submit">Sumit</button>
+            <button type="submit" @click="promp()">Submit</button>
         </div>
     </div>
 </div>

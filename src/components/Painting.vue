@@ -19,7 +19,7 @@ export default {
     id: Number,
     location: {
       type:String,
-      default:'http://127.0.0.1:8080/dino.png'
+      default:'Images/dino.png'
     },
     name:String,
     DateOfCreation:String,

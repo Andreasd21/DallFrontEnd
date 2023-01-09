@@ -24,33 +24,43 @@ jobs:
   Build-api:
     runs-on: ubuntu-latest
     needs: Build-docker
-    run: |
-      docker run -d --network=my-bridge-network -p 8082:80 -e DATABASE_CONECTION="Server=192.168.2.2,1433;Database=master;User Id=sa;Password=Test1234;" --name api neskred/dalle:api:back-end-api
+    steps: 
+      - name: Run container
+        run: |
+          docker run -d --network=my-bridge-network -p 8082:80 -e DATABASE_CONECTION="Server=192.168.2.2,1433;Database=master;User Id=sa;Password=Test1234;" --name api neskred/dalle:api:back-end-api
 
   Build-front:
     runs-on: ubuntu-latest
     needs: Build-docker
-    run: |
-      docker run -d --network=my-bridge-network -p 80:80 --name front neskred/dalle:front-end
+    steps: 
+      - name: Run container
+        run: |
+          docker run -d --network=my-bridge-network -p 80:80 --name front neskred/dalle:front-end
 
   Build-ware:
     runs-on: ubuntu-latest
     needs: Build-docker
-    run: |
-      docker run -d --network=my-bridge-network -p 8081:80 --name ware neskred/dalle:warehouse
+    steps: 
+      - name: Run container
+        run: |
+          docker run -d --network=my-bridge-network -p 8081:80 --name ware neskred/dalle:warehouse
 
   Build-db:
     runs-on: ubuntu-latest
     needs: Build-docker
-    run: |
-      docker run -d --network=my-bridge-network --ip 192.168.2.2 -p 1433:1433 --name database neskred/dalle:database_empty
+    steps: 
+      - name: Run container
+        run: |
+          docker run -d --network=my-bridge-network --ip 192.168.2.2 -p 1433:1433 --name database neskred/dalle:database_empty
 
   Build-images:
     runs-on: ubuntu-latest
     needs: Build-docker
-    run: |
-      docker run -d --network=my-bridge-network -p 8080:80 --name file neskred/dalle:imagesdb
-      
+    steps: 
+      - name: Run container
+        run: |
+          docker run -d --network=my-bridge-network -p 8080:80 --name file neskred/dalle:imagesdb
+
   Cypress-Test:
     needs: [Build-images,Build-db,Build-api,Build-ware,Build-front]
     runs-on: ubuntu-latest

@@ -18,6 +18,7 @@ jobs:
             password: ${{ secrets.DOCKERHUB_TOKEN }} #!!
         - name: Create Network
           run: |
+            ls
             docker network create -d bridge --subnet=192.168.0.0/16 my-bridge-network 
 
 
@@ -27,6 +28,7 @@ jobs:
     steps: 
       - name: Run container
         run: |
+          ls
           docker run -d --network=my-bridge-network -p 8082:80 -e DATABASE_CONECTION="Server=192.168.2.2,1433;Database=master;User Id=sa;Password=Test1234;" --name api neskred/dalle:api:back-end-api
 
   Build-front:
@@ -35,6 +37,7 @@ jobs:
     steps: 
       - name: Run container
         run: |
+          ls
           docker run -d --network=my-bridge-network -p 80:80 --name front neskred/dalle:front-end
 
   Build-ware:
@@ -43,6 +46,7 @@ jobs:
     steps: 
       - name: Run container
         run: |
+          ls
           docker run -d --network=my-bridge-network -p 8081:80 --name ware neskred/dalle:warehouse
 
   Build-db:
@@ -51,6 +55,7 @@ jobs:
     steps: 
       - name: Run container
         run: |
+          ls
           docker run -d --network=my-bridge-network --ip 192.168.2.2 -p 1433:1433 --name database neskred/dalle:database_empty
 
   Build-images:
@@ -59,6 +64,7 @@ jobs:
     steps: 
       - name: Run container
         run: |
+          ls
           docker run -d --network=my-bridge-network -p 8080:80 --name file neskred/dalle:imagesdb
 
   Cypress-Test:

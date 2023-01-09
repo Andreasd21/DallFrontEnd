@@ -51,6 +51,7 @@ jobs:
           shell: pwsh
           run: |
             $Response = Invoke-WebRequest -URI http://localhost:8082/api/Paintings
+            $Response.Content
 
 
 

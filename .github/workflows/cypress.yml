@@ -2,7 +2,7 @@ name: Cypress Tests
 on: [push]
 jobs:
 
-  Build-docker:
+  e2e-Testing:
       runs-on: ubuntu-latest
       steps:
         - name: "Checkout repo"
@@ -21,65 +21,37 @@ jobs:
             ls
             docker network create -d bridge --subnet=192.168.0.0/16 my-bridge-network 
 
+        - name: Run container
+          run: |
+            ls
+            docker run -d --network=my-bridge-network -p 8082:80 -e DATABASE_CONECTION="Server=192.168.2.2,1433;Database=master;User Id=sa;Password=Test1234;" --name api neskred/dalle:api:back-end-api
 
-  Build-api:
-    runs-on: ubuntu-latest
-    needs: Build-docker
-    steps: 
-      - name: Run container
-        run: |
-          ls
-          docker run -d --network=my-bridge-network -p 8082:80 -e DATABASE_CONECTION="Server=192.168.2.2,1433;Database=master;User Id=sa;Password=Test1234;" --name api neskred/dalle:api:back-end-api
+        - name: Run container
+          run: |
+            ls
+            docker run -d --network=my-bridge-network -p 80:80 --name front neskred/dalle:front-end
 
-  Build-front:
-    runs-on: ubuntu-latest
-    needs: Build-docker
-    steps: 
-      - name: Run container
-        run: |
-          ls
-          docker run -d --network=my-bridge-network -p 80:80 --name front neskred/dalle:front-end
+        - name: Run container
+          run: |
+            ls
+            docker run -d --network=my-bridge-network -p 8081:80 --name ware neskred/dalle:warehouse
 
-  Build-ware:
-    runs-on: ubuntu-latest
-    needs: Build-docker
-    steps: 
-      - name: Run container
-        run: |
-          ls
-          docker run -d --network=my-bridge-network -p 8081:80 --name ware neskred/dalle:warehouse
+        - name: Run container
+          run: |
+            ls
+            docker run -d --network=my-bridge-network --ip 192.168.2.2 -p 1433:1433 --name database neskred/dalle:database_empty
 
-  Build-db:
-    runs-on: ubuntu-latest
-    needs: Build-docker
-    steps: 
-      - name: Run container
-        run: |
-          ls
-          docker run -d --network=my-bridge-network --ip 192.168.2.2 -p 1433:1433 --name database neskred/dalle:database_empty
+        - name: Run container
+          run: |
+            ls
+            docker run -d --network=my-bridge-network -p 8080:80 --name file neskred/dalle:imagesdb
 
-  Build-images:
-    runs-on: ubuntu-latest
-    needs: Build-docker
-    steps: 
-      - name: Run container
-        run: |
-          ls
-          docker run -d --network=my-bridge-network -p 8080:80 --name file neskred/dalle:imagesdb
-
-  Cypress-Test:
-    needs: [Build-images,Build-db,Build-api,Build-ware,Build-front]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout GitCode
-        uses: actions/checkout@v2
-
-      - name: Run Cypress Test
-        uses: cypress-io/github-action@v4
-        with:
-            command: npx cypress run
-            browser: chrome
-      - uses: actions/upload-artifact@v1
-        with:
-            name: cypress-videos
-            path: cypress/videos
+        - name: Run Cypress Test
+          uses: cypress-io/github-action@v4
+          with:
+              command: npx cypress run
+              browser: chrome
+        - uses: actions/upload-artifact@v1
+          with:
+              name: cypress-videos
+              path: cypress/videos

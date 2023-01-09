@@ -46,6 +46,12 @@ jobs:
             ls
             docker run -d --network=my-bridge-network -p 8082:80 -e DATABASE_CONECTION='Server=192.168.2.2,1433;Database=master;User Id=sa;Password=Test1234;' --name api neskred/dalle:back-end-api
             docker network inspect my-bridge-network
+        
+        - name: check api running
+          shell: pwsh
+          run: |
+            $Response = Invoke-WebRequest -URI http://localhost:8082/api/Paintings
+
 
 
         - name: Run Cypress Test

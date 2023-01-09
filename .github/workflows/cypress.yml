@@ -21,27 +21,27 @@ jobs:
             ls
             docker network create -d bridge --subnet=192.168.0.0/16 my-bridge-network 
 
-        - name: Run container
+        - name: Run container api
           run: |
             ls
-            docker run -d --network=my-bridge-network -p 8082:80 -e DATABASE_CONECTION="Server=192.168.2.2,1433;Database=master;User Id=sa;Password=Test1234;" --name api neskred/dalle:api:back-end-api
+            docker run -d  -p 8082:80 -e DATABASE_CONECTION="Server=192.168.2.2,1433;Database=master;User Id=sa;Password=Test1234;" --name api neskred/dalle:api:back-end-api
 
-        - name: Run container
+        - name: Run container front
           run: |
             ls
             docker run -d --network=my-bridge-network -p 80:80 --name front neskred/dalle:front-end
 
-        - name: Run container
+        - name: Run container warehouse
           run: |
             ls
             docker run -d --network=my-bridge-network -p 8081:80 --name ware neskred/dalle:warehouse
 
-        - name: Run container
+        - name: Run container database
           run: |
             ls
             docker run -d --network=my-bridge-network --ip 192.168.2.2 -p 1433:1433 --name database neskred/dalle:database_empty
 
-        - name: Run container
+        - name: Run container image-db
           run: |
             ls
             docker run -d --network=my-bridge-network -p 8080:80 --name file neskred/dalle:imagesdb

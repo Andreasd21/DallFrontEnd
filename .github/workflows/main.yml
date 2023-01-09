@@ -38,4 +38,4 @@ jobs:
         with:
           file: './Dockerfile'
           push: true
-          tags: neskred/dalle:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/dalle:front-end

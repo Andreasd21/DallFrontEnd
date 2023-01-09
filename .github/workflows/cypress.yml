@@ -21,11 +21,6 @@ jobs:
             ls
             docker network create -d bridge --subnet=192.168.0.0/16 my-bridge-network 
 
-        - name: Run container api
-          run: |
-            ls
-            docker run -d --network=my-bridge-network -p 8082:80 -e DATABASE_CONECTION="Server=192.168.2.2,1433;Database=master;User Id=sa;Password=Test1234;" --name api neskred/dalle:api:back-end-api
-
         - name: Run container front
           run: |
             ls
@@ -45,6 +40,12 @@ jobs:
           run: |
             ls
             docker run -d --network=my-bridge-network -p 8080:80 --name file neskred/dalle:imagesdb
+
+        - name: Run container api
+          run: |
+            ls
+            docker run -d --network=my-bridge-network -p 8082:80 -e DATABASE_CONECTION="Server=192.168.2.2,1433;Database=master;User Id=sa;Password=Test1234;" --name api neskred/dalle:api:back-end-api
+
 
         - name: Run Cypress Test
           uses: cypress-io/github-action@v4

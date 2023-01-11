@@ -34,7 +34,7 @@ jobs:
         - name: Run container database
           run: |
             ls
-            docker run -d --network=my-bridge-network --ip 192.168.2.2 -p 1433:1433 --name database neskred/dalle:database_empty
+            docker run -d --network=my-bridge-network --ip 192.168.2.2 -p 1433:1433 --name database neskred/dalle:database
 
         - name: Run container image-db
           run: |

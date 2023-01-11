@@ -39,7 +39,7 @@ jobs:
         - name: Run container image-db
           run: |
             ls
-            docker run -d --network=my-bridge-network -p 8080:80 --name file neskred/dalle:imagesdb
+            docker run -d --network=my-bridge-network -p 8080:8080 --name file neskred/dalle:imagesdb
 
         - name: Run container api
           run: |

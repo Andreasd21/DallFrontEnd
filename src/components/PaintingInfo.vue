@@ -19,7 +19,7 @@ import axios from 'axios';
       loadData: async function() {
         await axios.get(`${import.meta.env.VITE_API_ENDPOINT}api/Paintings`+this.$route.params.Id).then(res =>{
         this.info = res.data
-        this.imagepath = 'http://127.0.0.1:8080/' + this.info.location
+        this.imagepath = 'http://127.0.0.1:8080/'+ this.info.location
         this.isFetching = false
       })
     }

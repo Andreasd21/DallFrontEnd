@@ -1,4 +1,3 @@
-const { describe, it } = require("vitest")
 
 describe('empty spec', () => {
   it('passes', () => {

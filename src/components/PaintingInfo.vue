@@ -2,7 +2,6 @@
 import axios from 'axios';
 </script>
 
-
 <script >
     export default {
   data() {

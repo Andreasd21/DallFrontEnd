@@ -8,7 +8,7 @@ describe('empty spec', () => {
 
 describe('visit painting',()=>{
   it('shows painting',()=>{
-    cy.visit('/info/1')
+    cy.visit('http://localhost:80/info/1')
     cy.contains('.attr')
   })
 })

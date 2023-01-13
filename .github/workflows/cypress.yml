@@ -36,11 +36,11 @@ jobs:
             ls
             docker run -d --network=my-bridge-network --ip 192.168.2.2 -p 1433:1433 --name database neskred/dalle:database
 
-        - name: Run container image-db
+        - name: Run container image-db #Weet niet hoe dit werkt maar het werkt. 
           run: |
             ls
-            docker run -d --network=my-bridge-network -p 8080:8080 --name file neskred/dalle:imagesdb
-
+            docker run -d --network=my-bridge-network -p 8080:8080 --name file neskred/dalle:imagesdb 
+          
         - name: Run container api
           run: |
             ls

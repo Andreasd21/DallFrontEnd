@@ -6,6 +6,13 @@ describe('empty spec', () => {
   })
 })
 
+describe('visit painting',()=>{
+  it('shows painting',()=>{
+    cy.visit('/info/1')
+    cy.contains('.attr')
+  })
+})
+
 describe('empty', () => {
   it('passes', () => {
     cy.visit('http://localhost:8081')
@@ -13,9 +20,3 @@ describe('empty', () => {
   })
 })
 
-describe('visit painting',()=>{
-  it('shows painting',()=>{
-    cy.visit('/info')
-    cy.contains('.attr')
-  })
-})

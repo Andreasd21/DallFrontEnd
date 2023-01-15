@@ -47,7 +47,7 @@ import { CheckUser } from '../Js/Authenticate';
     },
     methods: {
       loadData: async function() {
-        await axios.get('https://localhost:49153/api/Users/'+this.$route.params.Id).then(res =>{
+        await axios.get(`${import.meta.env.VITE_API_ENDPOINT}api/Users/`+this.$route.params.Id).then(res =>{
             console.log(res)
             this.info = res.data
       })

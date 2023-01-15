@@ -1,9 +1,10 @@
 import axios from "axios"
 
 export const Login = async(email, pass) => {
+  console.log(email,pass)
   const event =  new Event('user')
   let errorstatus = false
-    await axios.post('https://localhost:49153/api/Users/Login/',
+    await axios.post(import.meta.env.VITE_API_ENDPOINT+'api/Users/Login',
     {
         Email:email,
         Password:pass
@@ -23,7 +24,7 @@ export const Login = async(email, pass) => {
 }
 
 export const CreateAccount = async(name, email, pass) => {
-    await axios.post('https://localhost:49153/api/Users',
+    await axios.post(`${import.meta.env.VITE_API_ENDPOINT}api/Users`,
     {
         "id": 0,
         "name": name,

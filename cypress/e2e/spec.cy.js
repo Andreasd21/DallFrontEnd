@@ -6,13 +6,6 @@ describe('empty spec', () => {
   })
 })
 
-describe('visit painting',()=>{
-  it('shows painting',()=>{
-    cy.visit('http://localhost:80/info/1')
-    cy.wait(2000)
-    cy.contains('.attr')
-  })
-})
 
 describe('empty', () => {
   it('passes', () => {

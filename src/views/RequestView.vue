@@ -28,9 +28,9 @@
 </script>
 
 <template>
-<div class="container d-flex">
+<div class="container d-flex test">
     <div class="row d-flex">
-        <div class="col align-self-center d-flex title">
+        <div class="col align-self-center d-flex  title">
             Create you very own Painting
         </div>
     </div>
@@ -49,7 +49,7 @@
 </template>
 
 <style>
-.dflex{
+.test{
     align-content: stretch;
     justify-content: space-evenly;
     flex-direction: column;

@@ -69,7 +69,7 @@
       </div>
       <div class="col-md-12">
         <button>
-            Sign In
+            register
         </button>
 
       </div>

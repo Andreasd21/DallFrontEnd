@@ -24,6 +24,7 @@ export const Login = async(email, pass) => {
 }
 
 export const CreateAccount = async(name, email, pass) => {
+  let errorstatus = false
     await axios.post(`${import.meta.env.VITE_API_ENDPOINT}api/Users`,
     {
         "id": 0,
@@ -33,12 +34,12 @@ export const CreateAccount = async(name, email, pass) => {
         "password": pass
     }).then(function (response) {
         console.log(response);
-        return true
+        errorstatus = true
     })
     .catch(function (error) {
-    console.log(error);
-    return false
+      console.log(error);
     });
+    return errorstatus
 }
 
 export const Logout = () => {
